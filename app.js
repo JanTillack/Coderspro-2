@@ -1,80 +1,80 @@
-var main = function() {
- 	console.log('Gotowa do boju!');
+var main = function (){
+    console.log('gotowy do boju!');
+    var a, b
+    $('#sum').click(function(){
+    	a=parseNumber('#number_a');
+    	b=parseNumber('#number_b');
 
-	$('#sum').click(function(){
-		var a = parseNumber('#number-a');
-		var b = parseNumber('#number-b');
+    	var sum = add(a,b);
+    	printScore(sum);
+    });
 
-		var sum = add(a,b);
-		printScore(sum);
-	});
+    $('#sub').click(function(){
+    	a=parseNumber('#number_a');
+    	b=parseNumber('#number_b');
 
-	$('#sub').click(function(){
-		var a = parseNumber('#number-a');
-		var b = parseNumber('#number-b');
+    	var sub = substract(a,b);
+    	printScore(sub);
+    });
 
-		var sub = subt(a,b);
-		printScore(sub);
-	});
+       $('#mul').click(function(){
+    	a=parseNumber('#number_a');
+    	b=parseNumber('#number_b');
 
-	$('#mul').click(function(){
-		var a = parseNumber('#number-a');
-		var b = parseNumber('#number-b');
+    	var mul = multiply(a,b);
+    	printScore(mul);
+    });
 
-		var mul = mult(a,b);
-		printScore(mul);
-	});
+	 $('#div').click(function(){
+	    	a=parseNumber('#number_a');
+	    	b=parseNumber('#number_b');
 
-	$('#div').click(function(){
-		var a = parseNumber('#number-a');
-		var b = parseNumber('#number-b');
-
-		var div = divi(a,b);
-		printScore(div);
+	    	var div = divide(a,b);
+	    	printScore(div);
 	});
 
 }
 
-function parseNumber(id){
+function parseNumber (id){
 	var number = $(id).val();
 	number = checkCommas(number);
 	number = parseFloat(number);
 	return number;
 }
 
+
+
 function checkCommas(temp){
-	if(temp.indexOf(',') > -1){ 
-		temp.replace(',', '.');
-	}
-	return temp;
+    if(temp.indexOf(',') > -1){
+        temp.replace(',', '.');
+    }
+    return temp;
 }
 
 function add(a,b){
-	var c = a + b;
+	var c= a+b;
 	return c;
 }
 
-function subt(a,b){
-	var c = a - b;
+
+function substract(a,b){
+	var c= a-b;
 	return c;
 }
 
-function mult(a,b){
-	var c = a * b;
-	return c;
-}
-
-function divi(a,b){
-	if(b == 0) {
-		return 'Nie dziel przez 0';
-	} else {
-	var c = a / b;
-	return c;
+function divide(a,b){
+	var c= a/b;
+	if(b==0){
+		return 'Nie dzieli się przez 0!';
 	}
+	return c;
 }
+
 
 function printScore(score){
 	$('#score_indicator').text(score);
 }
+
+
 
 $(document).ready(main);
